@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Child2Error } from '../../error-models/models';
 
 @Component({
   selector: 'app-child2',
@@ -9,7 +10,7 @@ export class Child2Component implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    throw new Error('error from childmodule2');
+    throw new Child2Error('error from childmodule2');
   }
 
 }
