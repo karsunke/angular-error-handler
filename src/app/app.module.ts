@@ -1,8 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import {RootErrorHandler} from './root.error-handler';
+import {RouterModule} from '@angular/router';
+import {Child2Module} from './childmodule2/child2.module';
 
 
 @NgModule({
@@ -10,9 +13,17 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot([
+      {path: 'child1', loadChildren: 'app/childmodule1/child1.module#Child1Module'},
+      {path: 'child2', loadChildren: 'app/childmodule2/child2.module#Child2Module'}
+    ])
   ],
-  providers: [],
+  providers: [
+    {
+      provide: ErrorHandler, useClass: RootErrorHandler
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
