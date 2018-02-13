@@ -1,8 +1,8 @@
 import {ErrorHandler, NgModule} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Child2Component } from './child2/child2.component';
+import {CommonModule} from '@angular/common';
+import {Child2Component} from './child2/child2.component';
 import {RouterModule} from '@angular/router';
-import {RootErrorHandler} from '../root.error-handler';
+import {Child2ErrorHandler} from './child2.error-handler';
 
 @NgModule({
   imports: [
@@ -12,8 +12,9 @@ import {RootErrorHandler} from '../root.error-handler';
   declarations: [Child2Component],
   providers: [
     {
-      provide: ErrorHandler, useClass: RootErrorHandler
+      provide: ErrorHandler, useClass: Child2ErrorHandler
     }
   ],
 })
-export class Child2Module { }
+export class Child2Module {
+}
